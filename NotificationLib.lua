@@ -129,20 +129,14 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     if count then
         for i,v in pairs(ScreenGui:GetChildren()) do
             if v.Name == "Frame" then
-                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.12, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
             end
         end
     end
     Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration), false, function()
-        for i,v in pairs(ScreenGui:GetChildren()) do
-            if v:IsA("Frame") or v:IsA("TextLabel") or v:IsA("ImageButton") or v:IsA("ImageLabel") then
-                game:GetService("TweenService"):Create(v, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {Transparency = 1}):Play()
-            end
-        end
+        Frame:TweenPosition(UDim2.new(2.949999988, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
         wait(0.2)
-        for i,v in pairs(ScreenGui:GetChildren()) do
-            v:Destroy()
-        end
+        Frame:Destroy()
     end)
 end
 
