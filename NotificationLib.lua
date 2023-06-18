@@ -31,7 +31,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Frame.BackgroundTransparency = 1.000
     Frame.BorderSizePixel = 0
-    Frame.Position = UDim2.new(2.949999988, 0, 0.949999988, 0)
+    Frame.Position = UDim2.new(1.1, 0, 0.949999988, 0)
 
     Frame_2.Parent = Frame
     Frame_2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -125,22 +125,22 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     
     Text.Text = tostring(title) or "Notification"
     Text_2.Text = tostring(text) or "This is a notification."
-    Frame:TweenPosition(UDim2.new(0.95, 0, 0.95, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+    Frame:TweenPosition(UDim2.new(0.95, 0, 0.95, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
     if count then
         for i,v in pairs(ScreenGui:GetChildren()) do
             if v.Name == "Frame" then
-                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.12, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.12, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
             end
         end
     end
     Done.MouseButton1Click:Connect(function()
-        Frame:TweenPosition(UDim2.new(2.949999988, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
-        wait(0.2)
+        Frame:TweenPosition(UDim2.new(1.1, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
+        wait(0.4)
         Frame:Destroy()
     end)
     Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration) or 4, false, function()
-        Frame:TweenPosition(UDim2.new(2.949999988, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
-        wait(0.2)
+        Frame:TweenPosition(UDim2.new(1.1, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
+        wait(0.4)
         Frame:Destroy()
     end)
 end
