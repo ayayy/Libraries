@@ -129,7 +129,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     if count then
         for i,v in pairs(ScreenGui:GetChildren()) do
             if v.Name == "Frame" then
-                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.1325, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.132, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
             end
         end
     end
