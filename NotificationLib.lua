@@ -4,6 +4,10 @@ local ScreenGui = Instance.new("ScreenGui")
 
 function NotificationLib:Notify(title, text, duration, notificationType)
     -- (WE USED GUITOLUA CUZ LAZY ASF 😡🧢🥶🤪💀💸🛠️✅💫🤓😃😩)
+    if ScreenGui:FindFirstChild("Frame") then
+        count = true
+    end
+    wait()
     local Frame = Instance.new("Frame")
     local Frame_2 = Instance.new("Frame")
     local UICorner = Instance.new("UICorner")
@@ -27,7 +31,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Frame.BackgroundTransparency = 1.000
     Frame.BorderSizePixel = 0
-    Frame.Position = UDim2.new(0.949999988, 0, 0.949999988, 0)
+    Frame.Position = UDim2.new(2.949999988, 0, 0.949999988, 0)
 
     Frame_2.Parent = Frame
     Frame_2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -122,20 +126,24 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     Text.Text = tostring(title)
     Text_2.Text = tostring(text)
     Frame:TweenPosition(UDim2.new(0.95, 0, 0.95, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
-    Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration))
-    count = 0
-    for i,v in pairs(ScreenGui:GetChildren()) do
-        if v.Name == "Frame" then
-            count += 1
-        end
-    end
-    if count > 1 then
+    if count then
         for i,v in pairs(ScreenGui:GetChildren()) do
             if v.Name == "Frame" then
                 v:TweenPosition(v.Position - UDim2.new(0, 0, 0.1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
             end
         end
     end
+    Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration), false, function()
+        for i,v in pairs(ScreenGui:GetChildren()) do
+            if v:IsA("Frame") or v:IsA("TextLabel") or v:IsA("ImageButton") or v:IsA("ImageLabel") then
+                game:GetService("TweenService"):Create(v, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {Transparency = 1}):Play()
+            end
+        end
+        wait(0.2)
+        for i,v in pairs(ScreenGui:GetChildren()) do
+            v:Destroy()
+        end
+    end)
 end
 
 return NotificationLib
