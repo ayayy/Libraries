@@ -31,7 +31,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Frame.BackgroundTransparency = 1.000
     Frame.BorderSizePixel = 0
-    Frame.Position = UDim2.new(0, 1306, 0, 598)
+    Frame.Position = UDim2.new(0, 2300, 0, 950)
 
     Frame_2.Parent = Frame
     Frame_2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -140,7 +140,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
         if count then
             for i,v in pairs(ScreenGui:GetChildren()) do
                 if v.Name == "Frame" then
-                    if tonumber(v.Position.Y.Scale) < tonumber(Frame_2.Position.Y.Scale) then
+                    if tonumber(v.Position.Y.Offset) < tonumber(Frame_2.Position.Y.Offset) then
                         v:TweenPosition(v.Position + UDim2.new(0, 0, 0.132, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
                     end
                 end
