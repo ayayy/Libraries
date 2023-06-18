@@ -3,7 +3,7 @@ local NotificationLib = {}
 local ScreenGui = Instance.new("ScreenGui")
 
 function NotificationLib:Notify(title, text, duration, notificationType)
-    -- (WE USED GUITOLUA CUZ LAZY ASF 😡🧢🥶🤪💀💸🛠️✅💫🤓😃😩)
+    -- (USED GUITOLUA CUZ LAZY ASF 😡🧢🥶🤪💀💸🛠️✅💫🤓😃😩)
     if ScreenGui:FindFirstChild("Frame") then
         count = true
     end
@@ -123,8 +123,8 @@ function NotificationLib:Notify(title, text, duration, notificationType)
 
     --
     
-    Text.Text = tostring(title)
-    Text_2.Text = tostring(text)
+    Text.Text = tostring(title) or "Notification"
+    Text_2.Text = tostring(text) or "This is a notification."
     Frame:TweenPosition(UDim2.new(0.95, 0, 0.95, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
     if count then
         for i,v in pairs(ScreenGui:GetChildren()) do
@@ -133,7 +133,12 @@ function NotificationLib:Notify(title, text, duration, notificationType)
             end
         end
     end
-    Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration), false, function()
+    Done.MouseButton1Click:Connect(function()
+        Frame:TweenPosition(UDim2.new(2.949999988, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+        wait(0.2)
+        Frame:Destroy()
+    end)
+    Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration) or 4, false, function()
         Frame:TweenPosition(UDim2.new(2.949999988, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
         wait(0.2)
         Frame:Destroy()
