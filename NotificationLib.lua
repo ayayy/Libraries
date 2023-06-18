@@ -125,22 +125,22 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     
     Text.Text = tostring(title) or "Notification"
     Text_2.Text = tostring(text) or "This is a notification."
-    Frame:TweenPosition(UDim2.new(0.95, 0, 0.95, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
+    Frame:TweenPosition(UDim2.new(0.95, 0, 0.95, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
     if count then
         for i,v in pairs(ScreenGui:GetChildren()) do
             if v.Name == "Frame" then
-                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.12, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
+                v:TweenPosition(v.Position - UDim2.new(0, 0, 0.12, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
             end
         end
     end
     Done.MouseButton1Click:Connect(function()
-        Frame:TweenPosition(UDim2.new(1.1, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
-        wait(0.4)
+        Frame:TweenPosition(UDim2.new(1.1, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+        wait(0.2)
         Frame:Destroy()
     end)
     Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration) or 4, false, function()
-        Frame:TweenPosition(UDim2.new(1.1, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.4)
-        wait(0.4)
+        Frame:TweenPosition(UDim2.new(1.1, 0, 0.949999988, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+        wait(0.2)
         Frame:Destroy()
     end)
 end
