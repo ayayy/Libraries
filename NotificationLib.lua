@@ -154,7 +154,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
             for i,v in pairs(ScreenGui:GetChildren()) do
                 if v.Name == "Frame" then
                     if tonumber(v.Position.Y.Offset) < tonumber(Frame.Position.Y.Offset) then
-                        v:TweenPosition(v.Position + UDim2.new(0, 0, 0, 128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+                        v:TweenPosition(v.Position - UDim2.new(0, 0, 0, 128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
                     end
                 end
             end
