@@ -3,8 +3,9 @@ local NotificationLib = {}
 local ScreenGui = Instance.new("ScreenGui")
 
 function NotificationLib:Notify(title, text, duration, notificationType)
+    c = 0
     -- (USED GUITOLUA CUZ LAZY ASF 😡🧢🥶🤪💀💸🛠️✅💫🤓😃😩)
-    if ScreenGui:FindFirstChild("Frame") then
+    if ScreenGui:FindFirstChild("Frame"..tostring(1)) then
         count = true
     end
     wait()
@@ -31,6 +32,12 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+    for i,v in pairs(ScreenGui:GetChildren()) do
+        if v.Name:find("Frame") and v ~= Frame then
+            c += 1
+        end
+    end
+    Frame.Name == "Frame"..tostring(c + 1)
     Frame.Parent = ScreenGui
     Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     Frame.Position = UDim2.new(2, -398, 1, -128)
@@ -162,9 +169,9 @@ function NotificationLib:Notify(title, text, duration, notificationType)
         Done.Parent:Destroy()
     end)
     Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration) or 4, false, function()
-        Progress.Parent:TweenPosition(UDim2.new(2, -398, 1, -128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
+        Progress.Parent.Parent:TweenPosition(UDim2.new(2, -398, 1, -128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
         wait(0.2)
-        Progress.Parent:Destroy()
+        Progress.Parent.Parent:Destroy()
     end)
 end
 
