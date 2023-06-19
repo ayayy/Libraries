@@ -149,7 +149,6 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     Done.MouseButton1Click:Connect(function()
         Done.Parent:TweenPosition(UDim2.new(2, -398, 1, -128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
         wait(0.2)
-        Done.Parent:Destroy()
         if count then
             for i,v in pairs(ScreenGui:GetChildren()) do
                 if v.Name == "Frame" then
@@ -159,6 +158,8 @@ function NotificationLib:Notify(title, text, duration, notificationType)
                 end
             end
         end
+        wait()
+        Done.Parent:Destroy()
     end)
     Progress:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, tonumber(duration) or 4, false, function()
         Progress.Parent:TweenPosition(UDim2.new(2, -398, 1, -128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
