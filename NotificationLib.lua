@@ -1,6 +1,8 @@
 local NotificationLib = {}
 
 local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 function NotificationLib:Notify(title, text, duration, notificationType)
     c = 0
@@ -28,9 +30,6 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     local UIAspectRatioConstraint_6 = Instance.new("UIAspectRatioConstraint")
     local UIAspectRatioConstraint_7 = Instance.new("UIAspectRatioConstraint")
 
-
-    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     for i,v in pairs(ScreenGui:GetChildren()) do
         if v.Name:find("Frame") and v ~= Frame then
