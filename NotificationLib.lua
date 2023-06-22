@@ -37,7 +37,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
             c += 1
         end
     end
-    Frame.Name == "Frame"..tostring(c + 1)
+    Frame.Name = "Frame"..tostring(c + 1)
     Frame.Parent = ScreenGui
     Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     Frame.Position = UDim2.new(2, -398, 1, -128)
