@@ -148,7 +148,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
     Frame:TweenPosition(UDim2.new(1, -398, 1, -128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
     if count then
         for i,v in pairs(ScreenGui:GetChildren()) do
-            if v.Name == "Frame" then
+            if v.Name:find("Frame") then
                 v:TweenPosition(v.Position - UDim2.new(0, 0, 0, 128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
             end
         end
@@ -159,7 +159,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
         if count then
             for i,v in pairs(ScreenGui:GetChildren()) do
                 if v.Name:find("Frame") then
-                    if tonumber(string.sub(v.Name, 6, 6)) < tonumber(string.sub(Done.Parent, 6, 6)) then
+                    if tonumber(string.sub(v.Name, 6, 6)) < tonumber(string.sub(Done.Parent.Name, 6, 6)) then
                         v:TweenPosition(v.Position + UDim2.new(0, 0, 0, 128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
                     end
                 end
