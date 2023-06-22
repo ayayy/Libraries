@@ -1,12 +1,4 @@
---[[
-    Hello there, fellow skid!
-    If you've arrived at this gist for the sole purpose of changing the source code, note the following:
-    Changing the design or appearance just to edit the looks of the NotificationLib is completely fine, however, changing the system and how stuff works (the waittime between notifications, tweens, etc.) may cause issues with the script. Be aware!
-]]
-
---created by theo
-
-if NotifLibLoaded == false then
+if getgenv().NotifLibLoaded == false then
     pcall(function()
         getgenv().NotifLibLoaded = true
     end)
