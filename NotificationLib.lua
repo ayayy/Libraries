@@ -37,7 +37,7 @@ function NotificationLib:Notify(title, text, duration, notificationType)
             c += 1
         end
     end
-    Frame.Name = "Frame"..tostring(c + 1)
+    Frame.Name == "Frame"..tostring(c + 1)
     Frame.Parent = ScreenGui
     Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     Frame.Position = UDim2.new(2, -398, 1, -128)
@@ -158,8 +158,8 @@ function NotificationLib:Notify(title, text, duration, notificationType)
         wait(0.2)
         if count then
             for i,v in pairs(ScreenGui:GetChildren()) do
-                if v.Name == "Frame" then
-                    if tonumber(v.Position.Y.Offset) < tonumber(Done.Parent.Position.Y.Offset) then
+                if v.Name:find("Frame") then
+                    if tonumber(string.sub(v.Name, 6, 6)) < tonumber(string.sub(Done.Parent, 6, 6)) then
                         v:TweenPosition(v.Position + UDim2.new(0, 0, 0, 128), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.2)
                     end
                 end
