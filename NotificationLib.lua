@@ -3,6 +3,8 @@ local NotificationLib = {}
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.ResetOnSpawn = false
 
 function NotificationLib:Notify(title, text, duration, notificationType)
     c = 0
