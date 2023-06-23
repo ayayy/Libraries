@@ -18,9 +18,6 @@ else
     ScreenGui.IgnoreGuiInset = true
     ScreenGui.ResetOnSpawn = false
     ScreenGui.Name = "N"
-    if syn.protect_gui then
-        syn.protect_gui(ScreenGui)
-    end
     alreadyExists = false
 end
 
