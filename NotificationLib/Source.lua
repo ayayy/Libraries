@@ -1,13 +1,19 @@
-if NotifLibLoaded == false then
-    NotifLibLoaded = true
+if _G.NotifLibLoaded == false then
+    if game:GetService("CoreGui"):FindFirstChild("c") then
+        _G.NotifLibLoaded = true
+    end
 
     local NotificationLib = {}
 
     local ScreenGui = Instance.new("ScreenGui")
-    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    ScreenGui.Parent = game:GetService("CoreGui")
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.IgnoreGuiInset = true
     ScreenGui.ResetOnSpawn = false
+    ScreenGui.Name = "c"
+    if syn.protect_gui then
+        syn.protect_gui(ScreenGui)
+    end
 
     debounce = false
 
