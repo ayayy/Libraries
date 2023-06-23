@@ -1,7 +1,5 @@
-if getgenv().NotifLibLoaded == false then
-    pcall(function()
-        getgenv().NotifLibLoaded = true
-    end)
+if NotifLibLoaded == false then
+    NotifLibLoaded = true
 
     local NotificationLib = {}
 
