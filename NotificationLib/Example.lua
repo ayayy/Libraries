@@ -1,4 +1,4 @@
---created by theo
+--created by scrue
 
 --Loader:
 local Loader = loadstring(game:HttpGet("https://raw.githubusercontent.com/ayayy/Libraries/main/NotificationLib/Source.lua"))()
