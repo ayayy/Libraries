@@ -1,6 +1,7 @@
-# Hi!
-I'm theo (my real name is not theo), and I create scripts.
-Hmu if you wanna chat, *aydayx* on Discord
-
-# Wtf is this?
-I have a genuine passion for UI designing and scripting 🤓, and this is a collection of UIs I made, ones that I wish to share with y'all.
+# About
+Hey there, fellow humans! It looks like you've stumbled upon one of my projects. As I have a passion for scripting and UI designing, I've decided to share some of my creations with y'all.
+Enjoy! 😜
+# Socials
+**Discord user:** *aydayx*
+**Discord server:** *https://discord.gg/NBSvjeqGaW*
+**YouTube channel:** *https://www.youtube.com/channel/UC_pFajd2OKffb4fUiEQOKRg*
