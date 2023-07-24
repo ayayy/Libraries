@@ -363,6 +363,7 @@ function Byte:CreateWindow(name)
             LabelText.TextSize = 14.000
             LabelText.TextWrapped = true
             LabelText.TextXAlignment = Enum.TextXAlignment.Left
+            LabelText.AutomaticSize = Enum.AutomaticSize.X
 
             UITextSizeConstraint_7.Parent = LabelText
             UITextSizeConstraint_7.MaxTextSize = 14
