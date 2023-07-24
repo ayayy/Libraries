@@ -236,7 +236,6 @@ function Byte:CreateWindow(name)
         local UIListLayout_2 = Instance.new("UIListLayout")
 
         Content.Name = Tab.Name
-        Content.Name = Tab.Name..tostring(count)
         Content.Parent = Main
         Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Content.BackgroundTransparency = 1.000
@@ -257,7 +256,8 @@ function Byte:CreateWindow(name)
                     v.Visible = false
                 end
             end
-            Main:FindFirstChild(Tab.Name).Visible = true
+            local contentTarget = Main:FindFirstChild(Tab.Name)
+            contentTarget.Visible = true
         end)
 
         local Elements = {}
