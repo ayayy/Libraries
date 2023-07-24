@@ -250,6 +250,8 @@ function Byte:CreateWindow(name)
         UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
         UIListLayout_2.Padding = UDim.new(0, 6)
 
+        Content.Visible = false
+
         Tab.MouseButton1Down:Connect(function()
             for i,v in pairs(Main:GetDescendants()) do
                 if v:IsA("ScrollingFrame") then
@@ -307,6 +309,15 @@ function Byte:CreateWindow(name)
             UICorner_5.Parent = Button
         end
         return Elements
+    end
+    function TabsSection:SelectTab(name)
+        for i,v in pairs(Main:GetChildren()) do
+            if v:IsA("ScrollingFrame") and v.Name == name then
+                v.Visible = true
+            else
+                v.Visible = false
+            end
+        end
     end
     return TabsSection
 end
