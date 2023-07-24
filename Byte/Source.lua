@@ -5,6 +5,7 @@
 ]]
 
 local Byte = {}
+local TabsList = {}
 
 function Byte:CreateWindow(name)
     local ByteGui = Instance.new("ScreenGui")
@@ -252,6 +253,8 @@ function Byte:CreateWindow(name)
 
         Content.Visible = false
 
+        table.insert(TabsList, Tab.Name)
+
         Tab.MouseButton1Down:Connect(function()
             for i,v in pairs(Main:GetDescendants()) do
                 if v:IsA("ScrollingFrame") then
@@ -310,13 +313,12 @@ function Byte:CreateWindow(name)
         end
         return Elements
     end
-    function TabsSection:SelectTab(name)
-        for i,v in pairs(Main:GetChildren()) do
-            if v:IsA("ScrollingFrame") then
-                if v.Name == name then
-                    v.Visible = true
-                else
-                    v.Visible = false
+    function TabsSection:SelectTab(tableNum)
+        for i,v in pairs(TabsList) do
+            if i == tableNum then
+                if Main:FindFirstChild(v) then
+                    local tabContent = Main:FindFirstChild(v)
+                    tabContent.Visible
                 end
             end
         end
