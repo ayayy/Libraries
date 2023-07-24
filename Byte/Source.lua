@@ -313,6 +313,9 @@ function Byte:CreateWindow(name)
             UICorner_5.Parent = Button
         end
         function Elements:CreateLabel(name, transparent)
+            if not transparent or transparent == nil then
+                transparent = false
+            end
             local Label = Instance.new("TextLabel")
             local UICorner_11 = Instance.new("UICorner")
             local LabelText = Instance.new("TextLabel")
