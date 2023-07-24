@@ -276,7 +276,7 @@ function Byte:CreateWindow(name)
             Button.Size = UDim2.new(0, 506, 0, 34)
             Button.AutoButtonColor = false
             Button.Font = Enum.Font.SourceSans
-            Button.Text = tostring(name) or ""
+            Button.Text = ""
             Button.TextColor3 = Color3.fromRGB(255, 255, 255)
             Button.TextSize = 14.000
 
@@ -293,7 +293,7 @@ function Byte:CreateWindow(name)
             ButtonText.Position = UDim2.new(0, 7, 0, 10)
             ButtonText.Size = UDim2.new(0, 468, 0, 13)
             ButtonText.Font = Enum.Font.Gotham
-            ButtonText.Text = "Button"
+            ButtonText.Text = tostring(name) or ""
             ButtonText.TextColor3 = Color3.fromRGB(255, 255, 255)
             ButtonText.TextScaled = true
             ButtonText.TextSize = 14.000
