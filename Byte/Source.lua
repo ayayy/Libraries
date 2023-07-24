@@ -211,13 +211,14 @@ function Byte:CreateWindow(name)
         Tab.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Tab.BorderSizePixel = 0
         Tab.Position = UDim2.new(0, 1, 0, 1)
-        Tab.Size = UDim2.new(0, 86, 0, 20)
+        Tab.Size = UDim2.new(0, 60, 0, 20)
         Tab.Font = Enum.Font.Gotham
         Tab.Text = tostring(name) or ""
         Tab.TextColor3 = Color3.fromRGB(255, 255, 255)
         Tab.TextScaled = true
         Tab.TextSize = 13.000
         Tab.TextWrapped = true
+        Tab.AutomaticSize = Enum.AutomaticSize.X
         UIStroke_2.Parent = Tab
         UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
         UIStroke_2.Color = Color3.fromRGB(60, 60, 60)
@@ -310,6 +311,61 @@ function Byte:CreateWindow(name)
 
             UICorner_5.CornerRadius = UDim.new(0, 3)
             UICorner_5.Parent = Button
+        end
+        function Elements:CreateLabel(name, transparent)
+            local Label = Instance.new("TextLabel")
+            local UICorner_11 = Instance.new("UICorner")
+            local LabelText = Instance.new("TextLabel")
+            local UITextSizeConstraint_7 = Instance.new("UITextSizeConstraint")
+
+            if transparent == false then
+                Label.Name = tostring(name) or ""
+                Label.Parent = Content
+                Label.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+                Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                Label.BorderSizePixel = 0
+                Label.Position = UDim2.new(0, 0, 0, 120)
+                Label.Size = UDim2.new(0, 506, 0, 34)
+                Label.Font = Enum.Font.SourceSans
+                Label.Text = ""
+                Label.TextColor3 = Color3.fromRGB(0, 0, 0)
+                Label.TextSize = 14.000
+            else
+                Label.Name = tostring(name) or ""
+                Label.Parent = Content
+                Label.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+                Label.BackgroundTransparency = 1.000
+                Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                Label.BorderSizePixel = 0
+                Label.Position = UDim2.new(0, 0, 0, 120)
+                Label.Size = UDim2.new(0, 506, 0, 34)
+                Label.Font = Enum.Font.SourceSans
+                Label.Text = ""
+                Label.TextColor3 = Color3.fromRGB(0, 0, 0)
+                Label.TextSize = 14.000
+            end
+
+            UICorner_11.CornerRadius = UDim.new(0, 3)
+            UICorner_11.Parent = Label
+
+            LabelText.Name = "LabelText"
+            LabelText.Parent = Label
+            LabelText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            LabelText.BackgroundTransparency = 1.000
+            LabelText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            LabelText.BorderSizePixel = 0
+            LabelText.Position = UDim2.new(0, 7, 0, 10)
+            LabelText.Size = UDim2.new(0, 40, 0, 13)
+            LabelText.Font = Enum.Font.Gotham
+            LabelText.Text = tostring(name) or ""
+            LabelText.TextColor3 = Color3.fromRGB(255, 255, 255)
+            LabelText.TextScaled = true
+            LabelText.TextSize = 14.000
+            LabelText.TextWrapped = true
+            LabelText.TextXAlignment = Enum.TextXAlignment.Left
+
+            UITextSizeConstraint_7.Parent = LabelText
+            UITextSizeConstraint_7.MaxTextSize = 14
         end
         return Elements
     end
