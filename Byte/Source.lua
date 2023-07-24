@@ -211,7 +211,7 @@ function Byte:CreateWindow(name)
         Tab.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Tab.BorderSizePixel = 0
         Tab.Position = UDim2.new(0, 1, 0, 1)
-        Tab.Size = UDim2.new(0, 60, 0, 20)
+        Tab.Size = UDim2.new(0, 50, 0, 20)
         Tab.Font = Enum.Font.Gotham
         Tab.Text = tostring(name) or ""
         Tab.TextColor3 = Color3.fromRGB(255, 255, 255)
