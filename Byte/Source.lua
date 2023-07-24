@@ -312,10 +312,12 @@ function Byte:CreateWindow(name)
     end
     function TabsSection:SelectTab(name)
         for i,v in pairs(Main:GetChildren()) do
-            if v:IsA("ScrollingFrame") and v.Name == name then
-                v.Visible = true
-            else
-                v.Visible = false
+            if v:IsA("ScrollingFrame") then
+                if v.Name == name then
+                    v.Visible = true
+                else
+                    v.Visible = false
+                end
             end
         end
     end
