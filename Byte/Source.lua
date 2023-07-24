@@ -318,7 +318,7 @@ function Byte:CreateWindow(name)
             if i == tableNum then
                 if Main:FindFirstChild(v) then
                     local tabContent = Main:FindFirstChild(v)
-                    tabContent.Visible
+                    tabContent.Visible = true
                 end
             end
         end
