@@ -233,7 +233,7 @@ function Byte:CreateWindow(name)
         UITextSizeConstraint_2.Parent = Tab
         UITextSizeConstraint_2.MaxTextSize = 13
 
-        if string.len(Tab.Text) >= 7 then
+        if string.len(Tab.Text) >= 6 then
             local UIPadding = Instance.new("UIPadding")
             UIPadding.Parent = Tab
             UIPadding.PaddingBottom = UDim.new(0, 0)
