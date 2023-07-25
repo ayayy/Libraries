@@ -236,10 +236,10 @@ function Byte:CreateWindow(name)
         if string.len(Tab.Text) >= 7 then
             local UIPadding = Instance.new("UIPadding")
             UIPadding.Parent = Tab
-            UIPadding.PaddingBottom = Vector2.new(0, 0)
-            UIPadding.PaddingLeft = Vector2.new(0, 5)
-            UIPadding.PaddingRight = Vector2.new(0, 5)
-            UIPadding.PaddingTop = Vector2.new(0, 0)
+            UIPadding.PaddingBottom = UDim.new(0, 0)
+            UIPadding.PaddingLeft = UDim.new(0, 5)
+            UIPadding.PaddingRight = UDim.new(0, 5)
+            UIPadding.PaddingTop = UDim.new(0, 0)
         end
 
         wait()
