@@ -233,6 +233,15 @@ function Byte:CreateWindow(name)
         UITextSizeConstraint_2.Parent = Tab
         UITextSizeConstraint_2.MaxTextSize = 13
 
+        if string.len >= 7 then
+            local UIPadding = Instance.new("UIPadding")
+            UIPadding.Parent = Tab
+            UIPadding.PaddingBottom = Vector2.new(0, 0)
+            UIPadding.PaddingLeft = Vector2.new(0, 5)
+            UIPadding.PaddingRight = Vector2.new(0, 5)
+            UIPadding.PaddingTop = Vector2.new(0, 0)
+        end
+
         wait()
         local Content = Instance.new("ScrollingFrame")
         local UIListLayout_2 = Instance.new("UIListLayout")
@@ -311,6 +320,20 @@ function Byte:CreateWindow(name)
 
             UICorner_5.CornerRadius = UDim.new(0, 3)
             UICorner_5.Parent = Button
+
+            Button.MouseButton1Down:Connect(function()
+                game:GetService("TweenService"):Create(Button, TweenInfo.new(0.05), {BackgroundColor3 = Color3.fromRGB(43, 43, 43)}):Play()
+                wait(0.05)
+                game:GetService("TweenService"):Create(Button, TweenInfo.new(0.05), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
+            end)
+                
+            Button.MouseEnter:Connect(function()
+                game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(43, 43, 43)}):Play()
+            end)
+                
+            Button.MouseLeave:Connect(function()
+                game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
+            end)
         end
         function Elements:CreateLabel(name, transparent)
             if not transparent or transparent == nil then
@@ -324,7 +347,7 @@ function Byte:CreateWindow(name)
             if transparent == false then
                 Label.Name = tostring(name) or ""
                 Label.Parent = Content
-                Label.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+                Label.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
                 Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Label.BorderSizePixel = 0
                 Label.Position = UDim2.new(0, 0, 0, 120)
@@ -336,7 +359,7 @@ function Byte:CreateWindow(name)
             else
                 Label.Name = tostring(name) or ""
                 Label.Parent = Content
-                Label.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+                Label.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
                 Label.BackgroundTransparency = 1.000
                 Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 Label.BorderSizePixel = 0
