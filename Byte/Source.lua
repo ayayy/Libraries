@@ -175,6 +175,25 @@ function Byte:CreateWindow(name)
 
     runService.Heartbeat:Connect(Update)
 
+    runService.Heartbeat:Connect(function()
+        for i,v in pairs(Tabs:GetChildren()) do
+            if v:IsA("Button") then
+                if v:FindFirstChildOfClass("UIStroke") then
+                    if v.Text and string.len(v.Text) >= 7 then
+                        if not v:FindFirstChildOfClass("UIPadding") then
+                            local UIPadding = Instance.new("UIPadding")
+                            UIPadding.Parent = v
+                            UIPadding.PaddingBottom = UDim.new(0, 0)
+                            UIPadding.PaddingLeft = UDim.new(0, 5)
+                            UIPadding.PaddingRight = UDim.new(0, 5)
+                            UIPadding.PaddingTop = UDim.new(0, 0)
+                        end
+                    end
+                end
+            end
+        end 
+    end)
+
     local TabsSection = {}
 
     function TabsSection:CreateTab(name)
@@ -232,15 +251,6 @@ function Byte:CreateWindow(name)
 
         UITextSizeConstraint_2.Parent = Tab
         UITextSizeConstraint_2.MaxTextSize = 13
-
-        if string.len(Tab.Text) >= 7 then
-            local UIPadding = Instance.new("UIPadding")
-            UIPadding.Parent = Tab
-            UIPadding.PaddingBottom = UDim.new(0, 0)
-            UIPadding.PaddingLeft = UDim.new(0, 5)
-            UIPadding.PaddingRight = UDim.new(0, 5)
-            UIPadding.PaddingTop = UDim.new(0, 0)
-        end
 
         wait()
         local Content = Instance.new("ScrollingFrame")
