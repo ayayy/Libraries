@@ -137,7 +137,7 @@ function Byte:CreateWindow(name)
 
     local lastMousePos
     local lastGoalPos
-    local DRAG_SPEED = (8); -- // The speed of the UI darg.
+    local DRAG_SPEED = (12); -- // The speed of the UI darg.
     function Update(dt)
         if not (startPos) then return end;
         if not (dragging) and (lastGoalPos) then
