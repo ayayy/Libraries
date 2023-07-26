@@ -402,8 +402,8 @@ function Byte:CreateWindow(name)
             UITextSizeConstraint_7.Parent = LabelText
             UITextSizeConstraint_7.MaxTextSize = 14
         end
-        function Elements:CreateToggle(name, value, callback)
-            toggled = value or false
+        function Elements:CreateToggle(name, callback)
+            toggled = false
             callback = callback or function() end
             local Toggle = Instance.new("TextButton")
             local ToggleText = Instance.new("TextLabel")
