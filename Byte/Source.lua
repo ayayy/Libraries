@@ -231,7 +231,7 @@ function Byte:CreateWindow(name)
         UICorner_3.Parent = Tab
 
         UITextSizeConstraint_2.Parent = Tab
-        UITextSizeConstraint_2.MaxTextSize = 13
+        UITextSizeConstraint_2.MaxTextSize = 12
 
         if string.len(Tab.Text) >= 6 then
             local UIPadding = Instance.new("UIPadding")
@@ -275,7 +275,9 @@ function Byte:CreateWindow(name)
             contentTarget.Visible = true
 
             for i,v in pairs(Tabs:GetChildren()) do
-                v.UIStroke.Color = Color3.fromRGB(60, 60, 60)
+                if v:IsA("TextButton") then
+                    v.UIStroke.Color = Color3.fromRGB(60, 60, 60)
+                end
             end
             Tab.UIStroke.Color = Color3.fromRGB(80, 80, 80)
         end)
