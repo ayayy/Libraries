@@ -210,7 +210,6 @@ function Byte:CreateWindow(name)
         Tab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
         Tab.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Tab.BorderSizePixel = 0
-        Tab.BackgroundTransparency = 1.000
         Tab.Position = UDim2.new(0, 1, 0, 1)
         Tab.Size = UDim2.new(0, 50, 0, 20)
         Tab.Font = Enum.Font.Gotham
@@ -226,7 +225,7 @@ function Byte:CreateWindow(name)
         UIStroke_2.LineJoinMode = Enum.LineJoinMode.Round
         UIStroke_2.Thickness = 1
         UIStroke_2.Transparency = 0
-        UIStroke_2.Enabled = false
+        UIStroke_2.Enabled = true
 
         UICorner_3.CornerRadius = UDim.new(0, 3)
         UICorner_3.Parent = Tab
@@ -234,14 +233,14 @@ function Byte:CreateWindow(name)
         UITextSizeConstraint_2.Parent = Tab
         UITextSizeConstraint_2.MaxTextSize = 13
 
-        --[[if string.len(Tab.Text) >= 6 then
+        if string.len(Tab.Text) >= 6 then
             local UIPadding = Instance.new("UIPadding")
             UIPadding.Parent = Tab
             UIPadding.PaddingBottom = UDim.new(0, 0)
             UIPadding.PaddingLeft = UDim.new(0, 5)
             UIPadding.PaddingRight = UDim.new(0, 5)
             UIPadding.PaddingTop = UDim.new(0, 0)
-        end]]
+        end
 
         wait()
         local Content = Instance.new("ScrollingFrame")
@@ -274,6 +273,11 @@ function Byte:CreateWindow(name)
             end
             local contentTarget = Main:FindFirstChild(Tab.Name)
             contentTarget.Visible = true
+
+            for i,v in pairs(Tabs:GetChildren()) do
+                v.UIStroke.Color = Color3.fromRGB(60, 60, 60)
+            end
+            Tab.UIStroke.Color = Color3.fromRGB(80, 80, 80)
         end)
 
         local Elements = {}
