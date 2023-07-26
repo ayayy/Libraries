@@ -280,7 +280,7 @@ function Byte:CreateWindow(name)
                     v.UIStroke.Color = Color3.fromRGB(60, 60, 60)
                 end
             end
-            Tab.UIStroke.Color = Color3.fromRGB(100, 100, 100)
+            Tab.UIStroke.Color = Color3.fromRGB(85, 85, 85)
         end)
 
         local Elements = {}
