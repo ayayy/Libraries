@@ -210,6 +210,7 @@ function Byte:CreateWindow(name)
         Tab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
         Tab.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Tab.BorderSizePixel = 0
+        Tab.BackgroundTransparency = 1.000
         Tab.Position = UDim2.new(0, 1, 0, 1)
         Tab.Size = UDim2.new(0, 50, 0, 20)
         Tab.Font = Enum.Font.Gotham
@@ -225,7 +226,7 @@ function Byte:CreateWindow(name)
         UIStroke_2.LineJoinMode = Enum.LineJoinMode.Round
         UIStroke_2.Thickness = 1
         UIStroke_2.Transparency = 0
-        UIStroke_2.Enabled = true
+        UIStroke_2.Enabled = false
 
         UICorner_3.CornerRadius = UDim.new(0, 3)
         UICorner_3.Parent = Tab
