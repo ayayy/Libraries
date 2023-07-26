@@ -402,6 +402,121 @@ function Byte:CreateWindow(name)
             UITextSizeConstraint_7.Parent = LabelText
             UITextSizeConstraint_7.MaxTextSize = 14
         end
+        function Elements:CreateToggle(name, value, callback)
+            toggled = value or false
+            callback = callback or function() end
+            local Toggle = Instance.new("TextButton")
+            local ToggleText = Instance.new("TextLabel")
+            local UITextSizeConstraint_4 = Instance.new("UITextSizeConstraint")
+            local UICorner_6 = Instance.new("UICorner")
+            local Switch = Instance.new("TextLabel")
+            local UICorner_7 = Instance.new("UICorner")
+            local Circle = Instance.new("TextLabel")
+            local UICorner_8 = Instance.new("UICorner")
+
+            Toggle.Name = tostring(name) or ""
+            Toggle.Parent = Content
+            Toggle.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Toggle.BorderSizePixel = 0
+            Toggle.Position = UDim2.new(0, 1, 0, 40)
+            Toggle.Size = UDim2.new(0, 506, 0, 34)
+            Toggle.AutoButtonColor = false
+            Toggle.Font = Enum.Font.SourceSans
+            Toggle.Text = ""
+            Toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+            Toggle.TextSize = 14.000
+
+            ToggleText.Name = "ToggleText"
+            ToggleText.Parent = Toggle
+            ToggleText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            ToggleText.BackgroundTransparency = 1.000
+            ToggleText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            ToggleText.BorderSizePixel = 0
+            ToggleText.Position = UDim2.new(0, 7, 0, 9)
+            ToggleText.Size = UDim2.new(0, 441, 0, 13)
+            ToggleText.Font = Enum.Font.Gotham
+            ToggleText.Text = tostring(name) or ""
+            ToggleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+            ToggleText.TextScaled = true
+            ToggleText.TextSize = 14.000
+            ToggleText.TextWrapped = true
+            ToggleText.TextXAlignment = Enum.TextXAlignment.Left
+
+            UITextSizeConstraint_4.Parent = ToggleText
+            UITextSizeConstraint_4.MaxTextSize = 14
+
+            UICorner_6.CornerRadius = UDim.new(0, 3)
+            UICorner_6.Parent = Toggle
+
+            Switch.Name = "Switch"
+            Switch.Parent = Toggle
+            Switch.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+            Switch.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Switch.BorderSizePixel = 0
+            Switch.Position = UDim2.new(0, 459, 0, 10)
+            Switch.Size = UDim2.new(0, 35, 0, 13)
+            Switch.Font = Enum.Font.SourceSans
+            Switch.Text = ""
+            Switch.TextColor3 = Color3.fromRGB(0, 0, 0)
+            Switch.TextSize = 14.000
+
+            UICorner_7.CornerRadius = UDim.new(1, 0)
+            UICorner_7.Parent = Switch
+
+            if toggled then
+                Circle.Name = "Circle"
+                Circle.Parent = Switch
+                Circle.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+                Circle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                Circle.BorderSizePixel = 0
+                Circle.Position = UDim2.new(0, 23, 0, -2)
+                Circle.Size = UDim2.new(0, 16, 0, 16)
+                Circle.Font = Enum.Font.SourceSans
+                Circle.Text = ""
+                Circle.TextColor3 = Color3.fromRGB(0, 0, 0)
+                Circle.TextSize = 14.000
+            else
+                Circle.Name = "Circle"
+                Circle.Parent = Switch
+                Circle.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+                Circle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                Circle.BorderSizePixel = 0
+                Circle.Position = UDim2.new(0, -2, 0, -2)
+                Circle.Size = UDim2.new(0, 16, 0, 16)
+                Circle.Font = Enum.Font.SourceSans
+                Circle.Text = ""
+                Circle.TextColor3 = Color3.fromRGB(0, 0, 0)
+                Circle.TextSize = 14.000
+            end
+
+            UICorner_8.CornerRadius = UDim.new(1, 0)
+            UICorner_8.Parent = Circle
+
+            local db = false
+            Toggle.MouseButton1Down:Connect(function()
+                if not db then
+                    db = true
+                    if Toggle.Circle.Position == UDim2.new(0, -2, 0, -2) then
+                        Circle:TweenPosition(UDim2.new(0, 23, 0, -2), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.05)
+                        Circle.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+                        game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.05), {BackgroundColor3 = Color3.fromRGB(43, 43, 43)}):Play()
+                        wait(0.05)
+                        game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.05), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
+                    elseif Circle.Position == UDim2.new(0, 23, 0, -2) then
+                        Circle:TweenPosition(UDim2.new(0, -2, 0, -2), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.05)
+                        Circle.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+                        game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.05), {BackgroundColor3 = Color3.fromRGB(43, 43, 43)}):Play()
+                        wait(0.05)
+                        game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.05), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
+                    end
+                    toggled = not toggled
+                    pcall(callback, toggled)
+                    wait(0.1)
+                    db = false
+                end
+            end)
+        end
         return Elements
     end
     function TabsSection:SelectTab(tableNum)
