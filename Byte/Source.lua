@@ -219,6 +219,7 @@ function Byte:CreateWindow(name)
         Tab.TextSize = 13.000
         Tab.TextWrapped = true
         Tab.AutomaticSize = Enum.AutomaticSize.X
+        Tab.AutoButtonColor = false
         UIStroke_2.Parent = Tab
         UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
         UIStroke_2.Color = Color3.fromRGB(60, 60, 60)
@@ -279,7 +280,7 @@ function Byte:CreateWindow(name)
                     v.UIStroke.Color = Color3.fromRGB(60, 60, 60)
                 end
             end
-            Tab.UIStroke.Color = Color3.fromRGB(80, 80, 80)
+            Tab.UIStroke.Color = Color3.fromRGB(100, 100, 100)
         end)
 
         local Elements = {}
