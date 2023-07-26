@@ -497,7 +497,7 @@ function Byte:CreateWindow(name)
             Toggle.MouseButton1Down:Connect(function()
                 if not db then
                     db = true
-                    if Toggle.Circle.Position == UDim2.new(0, -2, 0, -2) then
+                    if Circle.Position == UDim2.new(0, -2, 0, -2) then
                         Circle:TweenPosition(UDim2.new(0, 23, 0, -2), Enum.EasingDirection.In, Enum.EasingStyle.Linear, 0.05)
                         Circle.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
                         game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.05), {BackgroundColor3 = Color3.fromRGB(43, 43, 43)}):Play()
