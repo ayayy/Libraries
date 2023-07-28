@@ -520,18 +520,18 @@ function Byte:CreateWindow(name)
         function Elements:CreateSlider(name, min, max, callback)
             min = min or 0
             max = max or 100
-            def = 0
+            value = 0
             callback = callback or function() end
             local Slider = Instance.new("TextLabel")
             local UICorner_9 = Instance.new("UICorner")
             local Slider_2 = Instance.new("Frame")
+            local SliderShow = Instance.new("Frame")
             local SliderCircle = Instance.new("TextButton")
             local UICorner_10 = Instance.new("UICorner")
             local SliderText = Instance.new("TextLabel")
             local UITextSizeConstraint_5 = Instance.new("UITextSizeConstraint")
             local SliderText_2 = Instance.new("TextLabel")
             local UITextSizeConstraint_6 = Instance.new("UITextSizeConstraint")
-            local SliderShow = Instance.new("Frame")
 
             Slider.Name = tostring(name) or ""
             Slider.Parent = Content
@@ -555,6 +555,14 @@ function Byte:CreateWindow(name)
             Slider_2.BorderSizePixel = 0
             Slider_2.Position = UDim2.new(0, 7, 0, 30)
             Slider_2.Size = UDim2.new(0, 480, 0, 1)
+
+            SliderShow.Name = "Slider"
+            SliderShow.Parent = Slider_2
+            SliderShow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+            SliderShow.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            SliderShow.BorderSizePixel = 0
+            SliderShow.Position = UDim2.new(0, 7, 0, 30)
+            SliderShow.Size = UDim2.new(1, 0, 1, 0)
 
             SliderCircle.Name = "SliderCircle"
             SliderCircle.Parent = Slider_2
@@ -608,14 +616,6 @@ function Byte:CreateWindow(name)
             UITextSizeConstraint_6.Parent = SliderText_2
             UITextSizeConstraint_6.MaxTextSize = 14
 
-            SliderShow.Name = "Slider"
-            SliderShow.Parent = Slider_2
-            SliderShow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-            SliderShow.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            SliderShow.BorderSizePixel = 0
-            SliderShow.Position = UDim2.new(0, 7, 0, 30)
-            SliderShow.Size = UDim2.new(1, 0, 1, 0)
-
             local db = false
             local percentage = 0+69-69*000
                 
@@ -648,6 +648,9 @@ function Byte:CreateWindow(name)
                     local pos = snap(((mousepos)-fpos)/fsize, 0.001)
                     percentage = math.clamp(pos, 0, 1)
                     SliderCircle.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
+                    value = math.round((percentage)) * tonumber(max)
+                    SliderText_2.Text = tostring(value)
+                    pcall(callback, value)
                 end
             end)
         end
@@ -659,6 +662,8 @@ function Byte:CreateWindow(name)
                 if Main:FindFirstChild(v) then
                     local tabContent = Main:FindFirstChild(v)
                     tabContent.Visible = true
+                    local tab = Tabs:FindFirstChild(v)
+                    tab.UIStroke.Enabled = true
                 end
             end
         end
