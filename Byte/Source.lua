@@ -635,7 +635,7 @@ function Byte:CreateWindow(name)
                 end
             end)
                 
-            script.Parent.MouseButton1Down:Connect(function()
+            SliderCircle.MouseButton1Down:Connect(function()
                 db = true
             end)
                 
