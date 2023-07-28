@@ -562,7 +562,7 @@ function Byte:CreateWindow(name)
             SliderShow.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderShow.BorderSizePixel = 0
             SliderShow.Position = UDim2.new(0, 0, 0, 0)
-            SliderShow.Size = UDim2.new(1, 0, 1, 0)
+            SliderShow.Size = UDim2.new(0, 0, 1, 0)
 
             SliderCircle.Name = "SliderCircle"
             SliderCircle.Parent = Slider_2
@@ -649,7 +649,7 @@ function Byte:CreateWindow(name)
                     percentage = math.clamp(pos, 0, 1)
                     SliderCircle.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
                     SliderShow.Size = UDim2.new(percentage, 0, SliderShow.Position.Y.Scale, SliderShow.Position.Y.Offset)
-                    value = math.floor((((tonumber(max) - tonumber(min)) / 149) * SliderShow.AbsoluteSize.X) + tonumber(min)) or 0
+                    value = math.floor((((tonumber(max) - tonumber(min)) / 480) * SliderShow.AbsoluteSize.X) + tonumber(min)) or 0
                     SliderText_2.Text = tostring(value)
                     pcall(callback, value)
                 end
@@ -664,7 +664,7 @@ function Byte:CreateWindow(name)
                     local tabContent = Main:FindFirstChild(v)
                     tabContent.Visible = true
                     local tab = Tabs:FindFirstChild(v)
-                    tab.UIStroke.Enabled = true
+                    tab.UIStroke.Color = Color3.fromRGB(85, 85, 85)
                 end
             end
         end
