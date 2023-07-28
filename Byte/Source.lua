@@ -572,7 +572,7 @@ function Byte:CreateWindow(name)
             SliderCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderCircle.BorderSizePixel = 0
             SliderCircle.Position = UDim2.new(defscale, 0, 0, -8)
-            SliderCircle.Size = UDim2.new(0, 4, 0, 12)
+            SliderCircle.Size = UDim2.new(0, 4, 0, 14)
             SliderCircle.Font = Enum.Font.SourceSans
             SliderCircle.Text = ""
             SliderCircle.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -640,7 +640,7 @@ function Byte:CreateWindow(name)
             SliderCircle.MouseButton1Down:Connect(function()
                 db = true
             end)
-            
+
             pcall(callback, value)
                 
             game.Players.LocalPlayer:GetMouse().Move:Connect(function()
