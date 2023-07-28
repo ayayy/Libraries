@@ -560,6 +560,7 @@ function Byte:CreateWindow(name)
 
             SliderShow.Name = "Slider"
             SliderShow.Parent = Slider_2
+            SliderShow.BackgroundTransparency = 1.000
             SliderShow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
             SliderShow.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderShow.BorderSizePixel = 0
