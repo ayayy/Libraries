@@ -517,10 +517,11 @@ function Byte:CreateWindow(name)
                 end
             end)
         end
-        function Elements:CreateSlider(name, min, max, callback)
-            min = min or 0
-            max = max or 100
-            value = 0
+        function Elements:CreateSlider(name, min, max, def, callback)
+            min = tonumber(min) or 0
+            max = tonumber(max) or 100
+            def = tonumber(def) or 0
+            value = def
             callback = callback or function() end
             local Slider = Instance.new("TextLabel")
             local UICorner_9 = Instance.new("UICorner")
@@ -569,8 +570,8 @@ function Byte:CreateWindow(name)
             SliderCircle.BackgroundColor3 = Color3.fromRGB(110, 110, 110)
             SliderCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderCircle.BorderSizePixel = 0
-            SliderCircle.Position = UDim2.new(0, 0, 0, -6)
-            SliderCircle.Size = UDim2.new(0, 2, 0, 10)
+            SliderCircle.Position = UDim2.new(0, 0, 0, -8)
+            SliderCircle.Size = UDim2.new(0, 4, 0, 12)
             SliderCircle.Font = Enum.Font.SourceSans
             SliderCircle.Text = ""
             SliderCircle.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -638,6 +639,19 @@ function Byte:CreateWindow(name)
             SliderCircle.MouseButton1Down:Connect(function()
                 db = true
             end)
+
+            local btnpos = SliderCircle.Position
+            local fsize = Slider_2.AbsoluteSize.X
+            local fpos = Slider_2.AbsolutePosition.X
+            local pos = snap(value, 0.001)
+            percentage = math.clamp(pos, 0, 1)
+            SliderCircle.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
+            SliderShow.Size = UDim2.new(percentage, 0, SliderShow.Position.Y.Scale, SliderShow.Position.Y.Offset)
+            --credits to kavo ui lib, was lazy today
+            value = math.floor((((tonumber(max) - tonumber(min)) / 480) * SliderShow.AbsoluteSize.X) + tonumber(min)) or 0
+            --
+            SliderText_2.Text = tostring(value)
+            pcall(callback, value)
                 
             game.Players.LocalPlayer:GetMouse().Move:Connect(function()
                 if db then
@@ -649,9 +663,7 @@ function Byte:CreateWindow(name)
                     percentage = math.clamp(pos, 0, 1)
                     SliderCircle.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
                     SliderShow.Size = UDim2.new(percentage, 0, SliderShow.Position.Y.Scale, SliderShow.Position.Y.Offset)
-                    --credits to kavo ui lib, was lazy today
                     value = math.floor((((tonumber(max) - tonumber(min)) / 480) * SliderShow.AbsoluteSize.X) + tonumber(min)) or 0
-                    --
                     SliderText_2.Text = tostring(value)
                     pcall(callback, value)
                 end
