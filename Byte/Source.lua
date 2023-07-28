@@ -517,6 +517,140 @@ function Byte:CreateWindow(name)
                 end
             end)
         end
+        function Elements:CreateSlider(name, min, max, callback)
+            min = min or 0
+            max = max or 100
+            def = 0
+            callback = callback or function() end
+            local Slider = Instance.new("TextLabel")
+            local UICorner_9 = Instance.new("UICorner")
+            local Slider_2 = Instance.new("Frame")
+            local SliderCircle = Instance.new("TextButton")
+            local UICorner_10 = Instance.new("UICorner")
+            local SliderText = Instance.new("TextLabel")
+            local UITextSizeConstraint_5 = Instance.new("UITextSizeConstraint")
+            local SliderText_2 = Instance.new("TextLabel")
+            local UITextSizeConstraint_6 = Instance.new("UITextSizeConstraint")
+            local SliderShow = Instance.new("Frame")
+
+            Slider.Name = tostring(name) or ""
+            Slider.Parent = Content
+            Slider.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+            Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Slider.BorderSizePixel = 0
+            Slider.Position = UDim2.new(0, 4, 0, 80)
+            Slider.Size = UDim2.new(0, 506, 0, 40)
+            Slider.Font = Enum.Font.SourceSans
+            Slider.Text = ""
+            Slider.TextColor3 = Color3.fromRGB(0, 0, 0)
+            Slider.TextSize = 14.000
+
+            UICorner_9.CornerRadius = UDim.new(0, 3)
+            UICorner_9.Parent = Slider
+
+            Slider_2.Name = "Slider"
+            Slider_2.Parent = Slider
+            Slider_2.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+            Slider_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Slider_2.BorderSizePixel = 0
+            Slider_2.Position = UDim2.new(0, 7, 0, 30)
+            Slider_2.Size = UDim2.new(0, 480, 0, 1)
+
+            SliderCircle.Name = "SliderCircle"
+            SliderCircle.Parent = Slider_2
+            SliderCircle.BackgroundColor3 = Color3.fromRGB(110, 110, 110)
+            SliderCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            SliderCircle.BorderSizePixel = 0
+            SliderCircle.Position = UDim2.new(0, 0, 0, -6)
+            SliderCircle.Size = UDim2.new(0, 10, 0, 10)
+            SliderCircle.Font = Enum.Font.SourceSans
+            SliderCircle.Text = ""
+            SliderCircle.TextColor3 = Color3.fromRGB(0, 0, 0)
+            SliderCircle.TextSize = 14.000
+
+            UICorner_10.CornerRadius = UDim.new(1, 0)
+            UICorner_10.Parent = SliderCircle
+
+            SliderText.Name = "SliderText"
+            SliderText.Parent = Slider
+            SliderText.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+            SliderText.BackgroundTransparency = 1.000
+            SliderText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            SliderText.BorderSizePixel = 0
+            SliderText.Position = UDim2.new(0, 7, 0, 4)
+            SliderText.Size = UDim2.new(0, 412, 0, 13)
+            SliderText.Font = Enum.Font.Gotham
+            SliderText.Text = tostring(name) or ""
+            SliderText.TextColor3 = Color3.fromRGB(255, 255, 255)
+            SliderText.TextScaled = true
+            SliderText.TextSize = 14.000
+            SliderText.TextWrapped = true
+            SliderText.TextXAlignment = Enum.TextXAlignment.Left
+
+            UITextSizeConstraint_5.Parent = SliderText
+            UITextSizeConstraint_5.MaxTextSize = 14
+
+            SliderText_2.Name = "SliderText"
+            SliderText_2.Parent = Slider
+            SliderText_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            SliderText_2.BackgroundTransparency = 1.000
+            SliderText_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            SliderText_2.BorderSizePixel = 0
+            SliderText_2.Position = UDim2.new(0, 475, 0, 4)
+            SliderText_2.Size = UDim2.new(0, 18, 0, 18)
+            SliderText_2.Font = Enum.Font.Gotham
+            SliderText_2.Text = "0"
+            SliderText_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+            SliderText_2.TextScaled = true
+            SliderText_2.TextSize = 14.000
+            SliderText_2.TextWrapped = true
+
+            UITextSizeConstraint_6.Parent = SliderText_2
+            UITextSizeConstraint_6.MaxTextSize = 14
+
+            SliderShow.Name = "Slider"
+            SliderShow.Parent = Slider_2
+            SliderShow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+            SliderShow.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            SliderShow.BorderSizePixel = 0
+            SliderShow.Position = UDim2.new(0, 7, 0, 30)
+            SliderShow.Size = UDim2.new(1, 0, 1, 0)
+
+            local db = false
+            local percentage = 0+69-69*000
+                
+            local uis = game:GetService("UserInputService")
+                
+            function snap(number, factor)
+                if factor == 0 then
+                    return number
+                else
+                    return math.floor(number/factor) * factor
+                end
+            end
+                
+            uis.InputEnded:Connect(function(i)
+                if i.UserInputType == Enum.UserInputType.MouseButton1 then
+                    db = false
+                end
+            end)
+                
+            script.Parent.MouseButton1Down:Connect(function()
+                db = true
+            end)
+                
+            game.Players.LocalPlayer:GetMouse().Move:Connect(function()
+                if db then
+                    local mousepos = uis:GetMouseLocation().X
+                    local btnpos = SliderCircle.Position
+                    local fsize = Slider_2.AbsoluteSize.X
+                    local fpos = Slider_2.AbsolutePosition.X
+                    local pos = snap(((mousepos)-fpos)/fsize, 0.001)
+                    percentage = math.clamp(pos, 0, 1)
+                    script.Parent.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
+                end
+            end)
+        end
         return Elements
     end
     function TabsSection:SelectTab(tableNum)
