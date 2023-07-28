@@ -690,8 +690,8 @@ function Byte:CreateWindow(name)
             Text.Position = UDim2.new(0, 6, 0, 10)
             Text.Size = UDim2.new(0, 468, 0, 13)
             Text.Font = Enum.Font.Gotham
-            Text.PlaceholderText = "Type something...."
-            Text.Text = tostring(name) or ""
+            Text.PlaceholderText = tostring(name) or ""
+            Text.Text = ""
             Text.TextColor3 = Color3.fromRGB(255, 255, 255)
             Text.TextScaled = true
             Text.TextSize = 14.000
@@ -718,8 +718,27 @@ function Byte:CreateWindow(name)
             SecondUnderline.Size = UDim2.new(0, 8, 0, 2)
             SecondUnderline.Visible = false
 
-            Text.FocusLost:Connect(function()
+            Text.Focused:Connect(function()
+                SecondUnderline.Visible = true
+                SecondUnderline.BackgroundTransparency = 0
+                SecondUnderline:TweenSizeAndPosition(UDim2.new(0, 506, 0, 2), UDim2.new(0, 0, 0, 34), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25)
+
                 pcall(callback, Text.Text)
+            end)
+                
+            Text.FocusLost:Connect(function()
+                game:GetService("TweenService"):Create(SecondUnderline, TweenInfo.new(0.1), {BackgroundTransparency = 1}):Play()
+                wait(0.1)
+                SecondUnderline:TweenSizeAndPosition(UDim2.new(0, 8, 0, 2), UDim2.new(0, 243, 0, 34), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.001)
+                SecondUnderline.Visible = false
+            end)
+                
+            TextBox.MouseEnter:Connect(function()
+                game:GetService("TweenService"):Create(Underline, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(90, 90, 90)}):Play()
+            end)
+                
+            TextBox.MouseLeave:Connect(function()
+                game:GetService("TweenService"):Create(Underline, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(75, 75, 75)}):Play()
             end)
         end
         return Elements
