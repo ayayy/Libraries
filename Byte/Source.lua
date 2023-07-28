@@ -660,6 +660,68 @@ function Byte:CreateWindow(name)
                 end
             end)
         end
+        function Elements:CreateTextbox(name, callback)
+            callback = callback or function() end
+
+            local TextBox = Instance.new("Frame")
+            local UICorner_12 = Instance.new("UICorner")
+            local Text = Instance.new("TextBox")
+            local UITextSizeConstraint_8 = Instance.new("UITextSizeConstraint")
+            local Underline = Instance.new("Frame")
+            local SecondUnderline = Instance.new("Frame")
+
+            TextBox.Name = tostring(name) or ""
+            TextBox.Parent = Content
+            TextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+            TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            TextBox.BorderSizePixel = 0
+            TextBox.Position = UDim2.new(0, 0, 0, 162)
+            TextBox.Size = UDim2.new(0, 506, 0, 34)
+
+            UICorner_12.CornerRadius = UDim.new(0, 3)
+            UICorner_12.Parent = TextBox
+
+            Text.Name = "Text"
+            Text.Parent = TextBox
+            Text.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+            Text.BackgroundTransparency = 1.000
+            Text.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Text.BorderSizePixel = 0
+            Text.Position = UDim2.new(0, 6, 0, 10)
+            Text.Size = UDim2.new(0, 468, 0, 13)
+            Text.Font = Enum.Font.Gotham
+            Text.PlaceholderText = "Type something...."
+            Text.Text = tostring(name) or ""
+            Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+            Text.TextScaled = true
+            Text.TextSize = 14.000
+            Text.TextWrapped = true
+            Text.TextXAlignment = Enum.TextXAlignment.Left
+
+            UITextSizeConstraint_8.Parent = Text
+            UITextSizeConstraint_8.MaxTextSize = 14
+
+            Underline.Name = "Underline"
+            Underline.Parent = TextBox
+            Underline.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+            Underline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Underline.BorderSizePixel = 0
+            Underline.Position = UDim2.new(0, 0, 0, 34)
+            Underline.Size = UDim2.new(0, 506, 0, 2)
+
+            SecondUnderline.Name = "SecondUnderline"
+            SecondUnderline.Parent = TextBox
+            SecondUnderline.BackgroundColor3 = Color3.fromRGB(110, 110, 110)
+            SecondUnderline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            SecondUnderline.BorderSizePixel = 0
+            SecondUnderline.Position = UDim2.new(0, 243, 0, 34)
+            SecondUnderline.Size = UDim2.new(0, 8, 0, 2)
+            SecondUnderline.Visible = false
+
+            Text.FocusLost:Connect(function()
+                pcall(callback, Text.Text)
+            end)
+        end
         return Elements
     end
     function TabsSection:SelectTab(tableNum)
