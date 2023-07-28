@@ -561,7 +561,7 @@ function Byte:CreateWindow(name)
             SliderShow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
             SliderShow.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderShow.BorderSizePixel = 0
-            SliderShow.Position = UDim2.new(0, 7, 0, 30)
+            SliderShow.Position = UDim2.new(0, 0, 0, 0)
             SliderShow.Size = UDim2.new(1, 0, 1, 0)
 
             SliderCircle.Name = "SliderCircle"
@@ -648,7 +648,8 @@ function Byte:CreateWindow(name)
                     local pos = snap(((mousepos)-fpos)/fsize, 0.001)
                     percentage = math.clamp(pos, 0, 1)
                     SliderCircle.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
-                    value = math.round((percentage)) * tonumber(max)
+                    SliderShow.Size = UDim2.new(percentage, 0, SliderShow.Position.Y.Scale, SliderShow.Position.Y.Offset)
+                    value = math.floor((((tonumber(max) - tonumber(min)) / 149) * SliderShow.AbsoluteSize.X) + tonumber(min)) or 0
                     SliderText_2.Text = tostring(value)
                     pcall(callback, value)
                 end
