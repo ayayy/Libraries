@@ -521,7 +521,8 @@ function Byte:CreateWindow(name)
             min = tonumber(min) or 0
             max = tonumber(max) or 100
             def = tonumber(def) or 0
-            value = def
+            value = math.clamp(def, min, max) or math.clamp(50, min, max)
+            defscale = (value - min) / (max - min)
             callback = callback or function() end
             local Slider = Instance.new("TextLabel")
             local UICorner_9 = Instance.new("UICorner")
@@ -563,14 +564,14 @@ function Byte:CreateWindow(name)
             SliderShow.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderShow.BorderSizePixel = 0
             SliderShow.Position = UDim2.new(0, 0, 0, 0)
-            SliderShow.Size = UDim2.new(0, 0, 1, 0)
+            SliderShow.Size = UDim2.new(defscale, 0, 1, 0)
 
             SliderCircle.Name = "SliderCircle"
             SliderCircle.Parent = Slider_2
             SliderCircle.BackgroundColor3 = Color3.fromRGB(110, 110, 110)
             SliderCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderCircle.BorderSizePixel = 0
-            SliderCircle.Position = UDim2.new(0, 0, 0, -8)
+            SliderCircle.Position = UDim2.new(defscale, 0, 0, -8)
             SliderCircle.Size = UDim2.new(0, 4, 0, 12)
             SliderCircle.Font = Enum.Font.SourceSans
             SliderCircle.Text = ""
@@ -608,7 +609,7 @@ function Byte:CreateWindow(name)
             SliderText_2.Position = UDim2.new(0, 475, 0, 4)
             SliderText_2.Size = UDim2.new(0, 18, 0, 18)
             SliderText_2.Font = Enum.Font.Gotham
-            SliderText_2.Text = "0"
+            SliderText_2.Text = tostring(value)
             SliderText_2.TextColor3 = Color3.fromRGB(255, 255, 255)
             SliderText_2.TextScaled = true
             SliderText_2.TextSize = 14.000
