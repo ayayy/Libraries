@@ -643,7 +643,7 @@ function Byte:CreateWindow(name)
             local btnpos = SliderCircle.Position
             local fsize = Slider_2.AbsoluteSize.X
             local fpos = Slider_2.AbsolutePosition.X
-            local pos = snap(value, 0.001)
+            local pos = snap(value / 480, 0.001)
             percentage = math.clamp(pos, 0, 1)
             SliderCircle.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
             SliderShow.Size = UDim2.new(percentage, 0, SliderShow.Position.Y.Scale, SliderShow.Position.Y.Offset)
