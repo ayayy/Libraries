@@ -570,7 +570,7 @@ function Byte:CreateWindow(name)
             SliderCircle.BorderColor3 = Color3.fromRGB(0, 0, 0)
             SliderCircle.BorderSizePixel = 0
             SliderCircle.Position = UDim2.new(0, 0, 0, -6)
-            SliderCircle.Size = UDim2.new(0, 10, 0, 10)
+            SliderCircle.Size = UDim2.new(0, 2, 0, 10)
             SliderCircle.Font = Enum.Font.SourceSans
             SliderCircle.Text = ""
             SliderCircle.TextColor3 = Color3.fromRGB(0, 0, 0)
