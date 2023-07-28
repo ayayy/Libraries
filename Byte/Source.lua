@@ -640,18 +640,7 @@ function Byte:CreateWindow(name)
             SliderCircle.MouseButton1Down:Connect(function()
                 db = true
             end)
-
-            local btnpos = SliderCircle.Position
-            local fsize = Slider_2.AbsoluteSize.X
-            local fpos = Slider_2.AbsolutePosition.X
-            local pos = snap(value / 480, 0.001)
-            percentage = math.clamp(pos, 0, 1)
-            SliderCircle.Position = UDim2.new(percentage, 0, btnpos.Y.Scale, btnpos.Y.Offset)
-            SliderShow.Size = UDim2.new(percentage, 0, SliderShow.Position.Y.Scale, SliderShow.Position.Y.Offset)
-            --credits to kavo ui lib, was lazy today
-            value = math.floor((((tonumber(max) - tonumber(min)) / 480) * SliderShow.AbsoluteSize.X) + tonumber(min)) or 0
-            --
-            SliderText_2.Text = tostring(value)
+            
             pcall(callback, value)
                 
             game.Players.LocalPlayer:GetMouse().Move:Connect(function()
