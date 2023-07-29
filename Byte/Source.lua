@@ -277,10 +277,10 @@ function Byte:CreateWindow(name)
 
             for i,v in pairs(Tabs:GetChildren()) do
                 if v:IsA("TextButton") then
-                    v.UIStroke.Color = Color3.fromRGB(60, 60, 60)
+                    game:GetService("TweenService"):Create(v.UIStroke, TweenInfo.new(0.1), {Color = Color3.fromRGB(60, 60, 60)}):Play()
                 end
             end
-            Tab.UIStroke.Color = Color3.fromRGB(85, 85, 85)
+            game:GetService("TweenService"):Create(Tab.UIStroke, TweenInfo.new(0.1), {Color = Color3.fromRGB(85, 85, 85)}):Play()
         end)
 
         local Elements = {}
@@ -750,9 +750,11 @@ function Byte:CreateWindow(name)
             if i == tableNum then
                 if Main:FindFirstChild(v) then
                     local tabContent = Main:FindFirstChild(v)
+                    tabContent.Size = UDim2.new(tabContent.Size.X.Offset, tabContent.Size.X.Scale, tabContent.Size.Y.Scale, 0)
                     tabContent.Visible = true
+                    game:GetService("TweenService"):Create(tabContent, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 514, 0, 239)}):Play()
                     local tab = Tabs:FindFirstChild(v)
-                    tab.UIStroke.Color = Color3.fromRGB(85, 85, 85)
+                    game:GetService("TweenService"):Create(tab.UIStroke, TweenInfo.new(0.1), {Color = Color3.fromRGB(85, 85, 85)}):Play()
                 end
             end
         end
