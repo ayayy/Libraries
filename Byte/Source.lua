@@ -541,7 +541,7 @@ function Byte:CreateWindow(name)
             Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
             Slider.BorderSizePixel = 0
             Slider.Position = UDim2.new(0, 4, 0, 80)
-            Slider.Size = UDim2.new(0, 506, 0, 40)
+            Slider.Size = UDim2.new(0, 506, 0, 48)
             Slider.Font = Enum.Font.SourceSans
             Slider.Text = ""
             Slider.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -555,7 +555,7 @@ function Byte:CreateWindow(name)
             Slider_2.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
             Slider_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
             Slider_2.BorderSizePixel = 0
-            Slider_2.Position = UDim2.new(0, 7, 0, 30)
+            Slider_2.Position = UDim2.new(0, 7, 0, 36)
             Slider_2.Size = UDim2.new(0, 480, 0, 1)
 
             SliderShow.Name = "Slider"
@@ -672,7 +672,7 @@ function Byte:CreateWindow(name)
 
             TextBox.Name = tostring(name) or ""
             TextBox.Parent = Content
-            TextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+            TextBox.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
             TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
             TextBox.BorderSizePixel = 0
             TextBox.Position = UDim2.new(0, 0, 0, 162)
