@@ -277,10 +277,10 @@ function Byte:CreateWindow(name)
 
             for i,v in pairs(Tabs:GetChildren()) do
                 if v:IsA("TextButton") then
-                    game:GetService("TweenService"):Create(v.UIStroke, TweenInfo.new(0.1), {Color = Color3.fromRGB(60, 60, 60)}):Play()
+                    game:GetService("TweenService"):Create(v.UIStroke, TweenInfo.new(0.25), {Color = Color3.fromRGB(60, 60, 60)}):Play()
                 end
             end
-            game:GetService("TweenService"):Create(Tab.UIStroke, TweenInfo.new(0.1), {Color = Color3.fromRGB(85, 85, 85)}):Play()
+            game:GetService("TweenService"):Create(Tab.UIStroke, TweenInfo.new(0.25), {Color = Color3.fromRGB(85, 85, 85)}):Play()
         end)
 
         local Elements = {}
