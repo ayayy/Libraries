@@ -722,8 +722,6 @@ function Byte:CreateWindow(name)
                 SecondUnderline.Visible = true
                 SecondUnderline.BackgroundTransparency = 0
                 SecondUnderline:TweenSizeAndPosition(UDim2.new(0, 506, 0, 2), UDim2.new(0, 0, 0, 34), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.25)
-
-                pcall(callback, Text.Text)
             end)
                 
             Text.FocusLost:Connect(function()
@@ -739,6 +737,10 @@ function Byte:CreateWindow(name)
                 
             TextBox.MouseLeave:Connect(function()
                 game:GetService("TweenService"):Create(Underline, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(75, 75, 75)}):Play()
+            end)
+
+            Text.FocusLost:Connect(function()
+                pcall(callback, Text.Text)
             end)
         end
         return Elements
