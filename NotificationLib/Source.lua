@@ -108,6 +108,8 @@ function NotificationLib:Notify(title, text, duration, notificationType)
             Type.Image = "rbxassetid://5107154082"
         elseif notificationType == "Warning" then
             Type.Image = "rbxassetid://12069916896"
+        elseif notificationType == "Success" then
+            Type.Image == "rbxassetid://12449128400"
         end
 
         UIAspectRatioConstraint_2.Parent = Type
