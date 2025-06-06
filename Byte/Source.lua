@@ -1,7 +1,7 @@
 --[[
     Hey there! You've stumbled upon the source code of Byte UI Library.
 
-    Try to resist not being a skid 💪
+    Try to resist being a skid 💪
 ]]
 
 local Byte = {}
